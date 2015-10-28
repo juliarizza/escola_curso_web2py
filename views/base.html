@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>{{=response.title}}</title>
+    <!-- BOOTSTRAP CORE STYLE  -->
+    <link href="{{=URL('static', 'css/bootstrap.min.css')}}" rel="stylesheet" />
+    <!-- FONT AWESOME ICONS  -->
+    <link href="{{=URL('static', 'css/font-awesome.css')}}" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="{{=URL('static', 'css/style.css')}}" rel="stylesheet" />
+     <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <strong>Email: </strong>contato@escola.com
+                    &nbsp;&nbsp;
+                    <strong>Support: </strong>+90-897-678-44
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <!-- HEADER END-->
+    <div class="navbar navbar-inverse set-radius-zero">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{=URL('index')}}">
+
+                    <h1 style="color: #fff;">App Escola</h1>
+                </a>
+
+            </div>
+
+            <div class="left-div">
+                <div class="user-settings-wrapper">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user" style="font-size: 25px;"></span>
+                            </a>
+                            {{if auth.user:}}
+                            <div class="dropdown-menu dropdown-settings">
+                                <div class="media">
+                                    <a class="media-left" href="#">
+                                        <img src="{{=URL('download', args=auth.user.avatar)}}" alt="" class="img-rounded" />
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">{{=auth.user.first_name}} {{=auth.user.last_name}} </h4>
+                                        <h5>{{=auth.user.trabalho}}</h5>
+
+                                    </div>
+                                </div>
+                                <hr />
+                                <h5><strong>Personal Bio : </strong></h5>
+                                {{=auth.user.bio}}
+                                <hr />
+                                <a href="#" class="btn btn-info btn-sm">Full Profile</a>&nbsp; <a href="{{=URL('user', args='logout')}}" class="btn btn-danger btn-sm">Logout</a>
+
+                            </div>
+                            {{pass}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOGO HEADER END-->
+    <section class="menu-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            <li><a href="{{=URL('index')}}">HOME</a></li>
+                            <li><a href="{{=URL('ver_notas', args=0)}}">NOTAS</a></li>
+                            <li><a href="{{=URL('forum')}}">FÓRUM</a></li>
+                            <li><a href="{{=URL('exibir_arquivos')}}">BIBLIOTECA</a></li>
+                            <li><a href="{{=URL('contato')}}">CONTATO</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- MENU SECTION END-->
+    {{include 'web2py_ajax.html'}} <!-- this includes jquery.js, calendar.js/.css and web2py.js -->
+    <div class="flash alert alert-dismissable">{{=response.flash or ''}}</div>
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="page-head-line">
+                        {{block title}}
+                            {{=response.title}}
+                        {{end}}
+                    </h4>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {{include}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- CONTENT-WRAPPER SECTION END-->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    &copy; 2015 App Escola | Layout By: <a href="http://www.designbootstrap.com/" target="_blank">DesignBootstrap</a> | Developed By: <a href="http://juliarizza.com">Júlia Rizza</a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER SECTION END-->
+    <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY SCRIPTS -->
+    <script src="{{=URL('static', 'js/jquery.js')}}"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="{{=URL('static', 'js/bootstrap.min.js')}}"></script>
+</body>
+</html>

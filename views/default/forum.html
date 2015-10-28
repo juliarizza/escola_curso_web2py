@@ -1,0 +1,22 @@
+{{extend 'base.html'}}
+
+<h1>Bem-vindo ao fórum!</h1>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Conteúdo</th>
+			<th>Enviada por</th>
+			<th>Enviada em</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{for mensagem in mensagens:}}
+			<tr>
+				<td><a href="{{=URL('ver_mensagem', args=mensagem.id)}}" style="color: #000;">{{=XML(mensagem.mensagem)}}</a></td>
+				<td>{{=mensagem.created_by}}</td>
+				<td>{{=mensagem.created_on}}</td>
+			</tr>
+		{{pass}}
+	</tbody>
+</table>

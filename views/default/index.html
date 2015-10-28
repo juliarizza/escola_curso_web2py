@@ -1,0 +1,32 @@
+{{extend 'base.html'}}
+
+{{block title}}
+  {{=response.title}} <small>{{=response.subtitle}}</small>
+{{end}}
+<div class="row">
+     <div class="col-md-3 col-sm-3 col-xs-6">
+        <div class="dashboard-div-wrapper bk-clr-one">
+            <i  class="fa fa-check dashboard-div-icon" ></i>
+             <a href="{{=URL('ver_notas', args=0)}}"><h5>NOTAS</h5></a>
+        </div>
+    </div>
+     <div class="col-md-3 col-sm-3 col-xs-6">
+        <div class="dashboard-div-wrapper bk-clr-two">
+            <i  class="fa fa-comment-o dashboard-div-icon" ></i>
+             <a href="{{=URL('forum')}}"><h5>FÓRUM</h5></a>
+        </div>
+    </div>
+     <div class="col-md-3 col-sm-3 col-xs-6">
+        <div class="dashboard-div-wrapper bk-clr-three">
+            <i  class="fa fa-graduation-cap dashboard-div-icon" ></i>
+             <a href="{{=URL('exibir_arquivos')}}"><h5>BIBLIOTECA</h5></a>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-6">
+        <div class="dashboard-div-wrapper bk-clr-four">
+            <i  class="fa fa-envelope-o dashboard-div-icon" ></i>
+             <a href="{{=URL('contato')}}"><h5>CONTATO</h5></a>
+        </div>
+    </div>
+
+</div>

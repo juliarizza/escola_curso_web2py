@@ -1,0 +1,22 @@
+{{extend 'base.html'}}
+
+{{cores = ['one', 'two', 'three', 'four']}}
+{{X=0}}
+{{for arquivo in arquivos:}}
+	<div class="col-md-3 col-sm-3 col-xs-6">
+		{{if X % 4 == 0:}}
+        <div class="dashboard-div-wrapper bk-clr-{{=cores[0]}}">
+        {{elif (X-1) % 4 == 0:}}
+        <div class="dashboard-div-wrapper bk-clr-{{=cores[1]}}">
+        {{elif (X-2) % 4 == 0:}}
+        <div class="dashboard-div-wrapper bk-clr-{{=cores[2]}}">
+        {{elif (X-3) % 4 == 0:}}
+        <div class="dashboard-div-wrapper bk-clr-{{=cores[3]}}">
+        {{pass}}
+            <i  class="fa fa-book dashboard-div-icon" ></i>
+             <a href="{{=URL('download', args=arquivo.arquivo)}}"><h5>ARQUIVO {{=X+1}}</h5></a>
+             <center>{{=arquivo.professor.first_name}} {{=arquivo.professor.last_name}}</center>
+        </div>
+    </div>
+    {{X+=1}}
+{{pass}}

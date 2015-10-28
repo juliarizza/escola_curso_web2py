@@ -1,0 +1,44 @@
+{{extend 'base.html'}}
+
+{{=form.custom.begin}}
+	{{if form.errors.nome:}}
+	<div class="form-group has-error">
+		<label class="control-label" for="error">Nome</label>
+		{{form.elements('#no_table_nome')[0]['_placeholder']='Fulano de Tal'}}
+		{{=form.custom.widget.nome}}
+	</div>
+	{{else:}}
+	<div class="form-group">
+		<label class="control-label">Nome</label>
+		{{form.elements('#no_table_nome')[0]['_placeholder']='Fulano de Tal'}}
+		{{=form.custom.widget.nome}}
+	</div>
+	{{pass}}
+	{{if form.errors.email:}}
+	<div class="form-group has-error">
+		<label class="control-label" for="error">E-mail</label>
+		{{form.elements('#no_table_email')[0]['_placeholder']='fulano@example.com'}}
+		{{=form.custom.widget.email}}
+	</div>
+	{{else:}}
+	<div class="form-group">
+		<label class="control-label">E-mail</label>
+		{{form.elements('#no_table_email')[0]['_placeholder']='fulano@example.com'}}
+		{{=form.custom.widget.email}}
+	</div>
+	{{pass}}
+	{{if form.errors.mensagem:}}
+	<div class="form-group has-error">
+		<label class="control-label" for="error">Mensagem</label>
+		{{form.elements('#no_table_mensagem')[0]['_placeholder']='Digite sua mensagem'}}
+		{{=form.custom.widget.mensagem}}
+	</div>
+	{{else:}}
+	<div class="form-group">
+		<label class="control-label">Mensagem</label>
+		{{form.elements('#no_table_mensagem')[0]['_placeholder']='Digite sua mensagem'}}
+		{{=form.custom.widget.mensagem}}
+	</div>
+	{{pass}}
+	<input type="submit" value="Enviar" class="btn btn-primary">
+{{=form.custom.end}}

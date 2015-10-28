@@ -1,0 +1,8 @@
+sessions/
+uploads/
+errors/
+databases/
+
+*.pyc
+*.log
+*.db

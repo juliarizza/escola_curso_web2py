@@ -1,0 +1,40 @@
+{{extend 'base.html'}}
+
+<h1>Mensagem do Fórum</h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">{{=mensagem.created_by.first_name}} disse:</div>
+  <div class="panel-body">
+    {{=mensagem.mensagem}}
+  </div>
+</div>
+
+{{for comentario in comentarios:}}
+<div class="media">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="{{=URL('download', args=comentario.created_by.avatar)}}" alt="avatar do usuário" width="64" height="64">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{=comentario.created_by.first_name}} respondeu:</h4>
+    {{=comentario.mensagem}}
+  </div>
+</div>
+{{pass}}
+
+<br>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+	{{=form.custom.begin}}
+  <div class="form-group">
+    <label>Envie um comentário</label>
+    {{form.elements("#comentarios_mensagem")[0]["_class"]="form-control"}}
+    {{=form.custom.widget.mensagem}}
+    <br>
+    <input type="submit" value="Enviar" class="btn btn-primary">
+  </div>
+  {{=form.custom.end}}
+	</div>
+</div>
