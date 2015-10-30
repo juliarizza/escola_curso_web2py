@@ -119,12 +119,12 @@ def ver_notas():
 @auth.requires_membership('Professor')
 def atualizar_notas():
     db(Notas.id > 0).update(nota=9.0)
-    return dict()
+    redirect(URL('ver_notas'))
 
 @auth.requires_membership('Professor')
 def apagar_notas():
     db(Notas.id > 0).delete()
-    return dict()
+    redirect(URL('ver_notas'))
 
 def nova_mensagem():
     form = SQLFORM(Forum)
@@ -171,7 +171,10 @@ def apagar_mensagem():
     session.flash = "Mensagem apagada!"
     redirect(URL('forum'))
 
+@auth.requires_login()
 def novo_arquivo():
+    Biblioteca.professor.default = auth.user.id
+    Biblioteca.professor.writable = Biblioteca.professor.readable = False
     form = crud.create(Biblioteca)
     return dict(form=form)
 
